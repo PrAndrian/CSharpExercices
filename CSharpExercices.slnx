@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MatrixRotation/MatrixRotation.csproj" />
+  <Project Path="MultiplyTwoNumbers/MultiplyTwoNumbers.csproj" />
+  <Project Path="NthRoot/NthRoot.csproj" />
+  <Project Path="SameHashCode/SameHashCode.csproj" />
+</Solution>

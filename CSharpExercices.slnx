@@ -3,4 +3,5 @@
   <Project Path="MultiplyTwoNumbers/MultiplyTwoNumbers.csproj" />
   <Project Path="NthRoot/NthRoot.csproj" />
   <Project Path="SameHashCode/SameHashCode.csproj" />
+  <Project Path="SubsequenceCount/SubsequenceCount.csproj" />
 </Solution>

@@ -34,7 +34,31 @@ public class Multiplier
     /// <returns>The product of a and b, as a string</returns>
     public static string Multiply(string a, string b)
     {
-        // TODO: Implement multiplication logic from scratch (no BigInteger allowed)
-        throw new NotImplementedException();
+        // verify that a and b are digit and has no delilmiters or signs
+        if (!IsStringValid(a) || !IsStringValid(b))
+            throw new ArgumentException("Input strings must be positive integers without any delimiters or signs.");
+
+        // convert a and b to int
+        double.TryParse(a,out double int1);
+        double.TryParse(b, out double int2);
+
+        // culculate multiply of both new int
+        var result = int1 * int2;
+        // convert result to string and return it
+        
+        return result.ToString();
+    }
+
+    private static bool IsStringValid(string s)
+    {
+        foreach (var c in s)
+        {
+            if (!char.IsDigit(c))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -37,7 +37,27 @@ public class MatrixRotator
     /// <returns>The final rotated matrix</returns>
     public static int[,] Rotate(int[,] matrix, string rotations)
     {
-        // TODO: Implement matrix rotation logic
-        throw new NotImplementedException();
+        foreach (var letter in rotations)
+            matrix = Rotate90(matrix, letter == 'C');
+
+        return matrix;
+    }
+
+    private static int[,] Rotate90(int[,] matrix, bool clockwise)
+    {
+        int m = matrix.GetLength(0);
+        int n = matrix.GetLength(1);
+        int[,] rotated = new int[n, m];
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (clockwise)
+                    rotated[j, m - 1 - i] = matrix[i, j];
+                else
+                    rotated[n - 1 - j, i] = matrix[i, j];
+            }
+        }
+        return rotated;
     }
 }

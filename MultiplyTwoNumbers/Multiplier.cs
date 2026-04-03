@@ -38,15 +38,28 @@ public class Multiplier
         if (!IsStringValid(a) || !IsStringValid(b))
             throw new ArgumentException("Input strings must be positive integers without any delimiters or signs.");
 
-        // convert a and b to int
-        double.TryParse(a,out double int1);
-        double.TryParse(b, out double int2);
+        long[] results = new long[a.Length + b.Length];
 
-        // culculate multiply of both new int
-        var result = int1 * int2;
-        // convert result to string and return it
-        
-        return result.ToString();
+        // multiply digit by digit, accumulate all products
+        for (int i = a.Length - 1; i >= 0; i--)
+        {
+            for (int j = b.Length - 1; j >= 0; j--)
+            {
+                int valueA = int.Parse(a[i].ToString());
+                int valueB = int.Parse(b[j].ToString());
+                results[i + j + 1] += valueA * valueB;
+            }
+        }
+
+        // decalage from right to left
+        for (int k = results.Length - 1; k > 0; k--)
+        {
+            results[k - 1] += results[k] / 10;
+            results[k] = results[k] % 10;
+        }
+
+        var result = string.Join("", results).TrimStart('0');
+        return result.Length == 0 ? "0" : result;
     }
 
     private static bool IsStringValid(string s)
@@ -57,6 +70,11 @@ public class Multiplier
             {
                 return false;
             }
+        }
+
+        if (s.All(c => c == '0'))
+        {
+            return false;
         }
 
         return true;
